@@ -2,7 +2,7 @@ import psutil
 import traceback
 import os
 
-appDict = {"photoshop", "lightroom", "acrobat", "aftereffects", "audition", "illustrator", "indesign", "premiere pro"}
+appDict = {"photoshop", "lightroom", "aftereffects", "audition", "illustrator", "indesign", "premiere pro"}
 
 def updateInfo():
     try:
@@ -36,7 +36,7 @@ def getAdobeProcess():
 def getIcon(process):
     for appName in appDict:
         if appName in process.name().lower():
-            return appName
+            return appName.replace(" ", "")
 
 def getStatus():
     None
