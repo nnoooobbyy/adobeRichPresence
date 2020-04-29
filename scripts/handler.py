@@ -2,7 +2,7 @@ import psutil
 import traceback
 import os
 
-appDict = {"photoshop.exe", "lightroom.exe"}
+appDict = {"photoshop", "lightroom"}
 
 def updateInfo():
     try:
@@ -16,20 +16,27 @@ def updateInfo():
         print("process: {}".format(adobeProcess))
         processName = os.path.splitext(adobeProcess.name())[0]
         startTime = adobeProcess.create_time()
-        return (processName, startTime)
+        iconName = getIcon(adobeProcess)
+        return (processName, iconName, startTime)
 
 def getAdobeProcess():
     print("scanning through {} processes...".format(len(psutil.pids())))
     for pid in psutil.pids():
         process = psutil.Process(pid)
         try:
-            if process.name().lower() in appDict:
-                return process
+            for appName in appDict:
+                if appName in process.name().lower():
+                    return process
         except Exception:
             print("An error occured while obtaining processes!")
             traceback.print_exc()
             return None
     return None
+
+def getIcon(process):
+    for appName in appDict:
+        if appName in process.name().lower():
+            return appName
 
 def getStatus():
     None
