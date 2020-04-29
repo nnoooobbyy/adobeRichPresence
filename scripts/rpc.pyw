@@ -1,7 +1,9 @@
 from pypresence import Presence
 from handler import updateInfo
+from PIL import Image
 import traceback
 import time
+import sys
 
 client_id = '704850028602195978'
 discordPresence = Presence(client_id)
