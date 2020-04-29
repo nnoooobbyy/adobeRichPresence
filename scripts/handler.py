@@ -2,7 +2,7 @@ import psutil
 import traceback
 import os
 
-appDict = {"photoshop", "lightroom"}
+appDict = {"photoshop", "lightroom", "acrobat", "aftereffects", "audition", "illustrator", "indesign", "premiere pro"}
 
 def updateInfo():
     try:
