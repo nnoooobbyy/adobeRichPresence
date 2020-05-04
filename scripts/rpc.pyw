@@ -19,12 +19,14 @@ while True:  # the presence will run as long as the program is running
             processName = newInfo[0]
             iconName = newInfo[1]
             startTime = newInfo[2]
+            windowTitle = newInfo[3]
             largeImage = "{}_large".format(iconName)
             print(discordPresence.update(
-            details= processName,
-            start= startTime,
-            large_image= largeImage,
-            large_text= processName,))
+            details = processName,
+            start = startTime,
+            large_image = largeImage,
+            large_text = processName,
+            state = windowTitle,))
     except Exception:
         traceback.print_exc()
     time.sleep(10)
