@@ -26,7 +26,7 @@ while True:  # the presence will run as long as the program is running
             start = startTime,
             large_image = largeImage,
             large_text = processName,
-            state = windowTitle,))
+            state = windowTitle))
     except Exception:
         traceback.print_exc()
     time.sleep(10)

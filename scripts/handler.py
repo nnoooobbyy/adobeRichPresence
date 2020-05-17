@@ -3,6 +3,7 @@ import traceback
 import os
 import platform
 import sys
+import ntpath
 
 appDict = {"photoshop", "lightroom", "after effects", "audition", "illustrator", "indesign", "incopy", "premiere pro"}
 
@@ -52,6 +53,13 @@ def getStatus(pid):
         hwnds = []
         win32gui.EnumWindows(callback, hwnds)
         windowTitle = win32gui.GetWindowText(hwnds[-1])
+        try:
+            windowTitleProject = ntpath.basename(windowTitle)
+            return windowTitleProject
+        except Exception:
+            print("Can't find project")
+            return windowTitle
+
         return windowTitle
     elif sys.platform in ['Mac', 'darwin', 'os2', 'os2emx']:
         print("Working on macOS Support soon!")
