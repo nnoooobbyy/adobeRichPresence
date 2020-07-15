@@ -3,7 +3,7 @@ import traceback
 import os
 import platform
 import sys
-import ntpath
+import os.path as path
 
 appDict = {"photoshop", "lightroom", "after effects", "audition", "illustrator", "indesign", "incopy", "premiere pro"}
 
@@ -32,7 +32,7 @@ def getAdobeProcess():
                 if appName in process.name().lower():
                     return process
         except Exception:
-            print("An error occured while obtaining processes!")
+            print("An error occurred while obtaining processes!")
             traceback.print_exc()
             return None
     return None
@@ -54,7 +54,7 @@ def getStatus(pid):
         win32gui.EnumWindows(callback, hwnds)
         windowTitle = win32gui.GetWindowText(hwnds[-1])
         try:
-            windowTitleProject = ntpath.basename(windowTitle)
+            windowTitleProject = path.basename(windowTitle)
             return windowTitleProject
         except Exception:
             print("Can't find project")
